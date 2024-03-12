@@ -25,7 +25,7 @@ namespace GUI
                 if (busEmployee.Login(txtEmail.Text, txtPassword.Text))
                 {
 
-                    MessageBox.Show("Đăng nhập thành công!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Đăng nhập thành công!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Properties.Settings.Default.isSave = tglRememberMe.Checked;
                     if (tglRememberMe.Checked)
                     {
@@ -33,16 +33,16 @@ namespace GUI
                         Properties.Settings.Default.password = txtPassword.Text;
                     }
                     Properties.Settings.Default.Save();
-                    /*frmMain fMain = new frmMain(txtEmail.Text);
+                    frmMain fMain = new frmMain(txtEmail.Text);
                     this.Hide();
-                    fMain.ShowDialog();
-                    this.Show();*/
+                   fMain.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
                     MessageBox.Show("Sai email hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtEmail.Text = "";
-                    txtPassword.Text = "";
+                    
                     txtEmail.Focus();
                 }
             }
@@ -57,16 +57,17 @@ namespace GUI
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-           /* if (Properties.Settings.Default.isSave)
+           if (Properties.Settings.Default.isSave)
             {
                 txtEmail.Text = Properties.Settings.Default.email;
                 txtPassword.Text = Properties.Settings.Default.password;
                 tglRememberMe.Checked = true;
-            }*/
+            }
         }
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Chức năng đang bảo trì", "Thông báo");
             /*if (txtEmail.Text != "")
             {
                 busEmployee = new BUS_Employee();

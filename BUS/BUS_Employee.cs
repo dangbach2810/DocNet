@@ -62,48 +62,93 @@ namespace BUS
             oldPassword = Encrytion(oldPassword);
             newPassword = Encrytion(newPassword);
             return dalEmployee.ChangePassword(email, oldPassword, newPassword);
+        }*/
+
+        public List<tblEmployee> ListOfEmployees()
+        {
+            return db.tblEmployees.ToList();
         }
 
-        public DataTable ListOfEmployees()
+       public bool InsertEmployee(tblEmployee employee)
         {
-            return dalEmployee.ListOfEmployees();
+            try
+            {
+                db.tblEmployees.InsertOnSubmit(employee);
+                db.SubmitChanges();
+                return true;
+            }catch (Exception ex) 
+            {
+            
+                return false;
+            }
         }
 
-        public bool InsertEmployee(DTO_Employee employee)
+        public bool UpdateEmployee(tblEmployee employee)
         {
-            employee.Password = Encrytion(employee.Password);
-            return dalEmployee.InsertEmployee(employee);
+            try
+            {
+                tblEmployee tblEmployee = db.tblEmployees.Where(emp => emp.Email == employee.Email).FirstOrDefault();
+                tblEmployee.Name = employee.Name;
+                tblEmployee.Address = employee.Address;
+                tblEmployee.PhoneNumber = employee.PhoneNumber;
+                tblEmployee.Email = employee.Email;
+                tblEmployee.Role = employee.Role;
+                tblEmployee.Status = employee.Status;
+
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public bool UpdateEmployee(DTO_Employee employee)
+        public bool UpdateEmployeeAddressPhoneNumber(tblEmployee employee)
         {
-            return dalEmployee.UpdateEmployee(employee);
-        }
-
-        public bool UpdateEmployeeAddressPhoneNumber(DTO_Employee employee)
-        {
-            return dalEmployee.UpdateEmployeeAddressPhoneNumber(employee);
+            try
+            {
+                tblEmployee tblEmployee = db.tblEmployees.FirstOrDefault(emp => emp.Email == employee.Email);
+                tblEmployee.Address = employee.Address;
+                tblEmployee.PhoneNumber = employee.PhoneNumber;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool DeleteEmployee(int id)
         {
-            return dalEmployee.DeleteEmployee(id);
+            try
+            {
+                tblEmployee tblEmployee = (tblEmployee)db.tblEmployees.FirstOrDefault(emp => emp.Id == id);
+                db.tblEmployees.DeleteOnSubmit(tblEmployee);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public DataTable SearchEmployee(string name)
+        public List<tblEmployee> SearchEmployee(string name)
         {
-            return dalEmployee.SearchEmployee(name);
+            return db.tblEmployees.Where(emp => emp.Name.Contains(name)).ToList();
         }
 
-        public string GetEmployeeIdName(string email)
+       /* public string GetEmployeeIdName(string email)
         {
             return dalEmployee.GetEmployeeIdName(email);
-        }
+        }*/
 
-        public string GetEmployeeAddressPhoneNumber(string email)
+       /* public string GetEmployeeAddressPhoneNumber(string email)
         {
             return dalEmployee.GetEmployeeAddressPhoneNumber(email);
-        }
+        }*/
 
         public string GetRandomPassword()
         {
@@ -130,6 +175,6 @@ namespace BUS
                 return builder.ToString().ToUpper();
             }
             else return builder.ToString().ToLower();
-        }*/
+        }
     }
 }
