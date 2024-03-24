@@ -112,7 +112,6 @@ namespace GUI
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Properties.Settings.Default.password = "";
                             Properties.Settings.Default.Save();
-                            Application.Exit();
                             Application.Restart();
                         }
                         else MessageBox.Show("Mật khẩu cũ không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
