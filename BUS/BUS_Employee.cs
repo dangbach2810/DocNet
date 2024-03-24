@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,49 +11,35 @@ namespace BUS
 {
     public class BUS_Employee
     {
-        private QLSanPhamDataContext db;
-
-        public BUS_Employee()
+        QLSanPhamDataContext db = new QLSanPhamDataContext();
+       /* private string Encrytion(string input)
         {
-            db = new QLSanPhamDataContext();
-        }
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+        }*/
+
         public bool Login(string email, string password)
         {
 
-            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            tblEmployee employee = db.tblEmployees. FirstOrDefault(emp => emp.Email == email);
             if (employee != null)
             {
                 return true;
             }
             return false;
-
+            
         }
-
-        public tblEmployee TimNVByEmail(string email)
-        {
-            return db.tblEmployees.FirstOrDefault(nv => nv.Email == email);
-        }
-
-
-
-        /* private string Encrytion(string input)
-         {
-             using (MD5 md5 = MD5.Create())
-             {
-                 byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                 byte[] hashBytes = md5.ComputeHash(inputBytes);
-                 StringBuilder sb = new StringBuilder();
-
-                 for (int i = 0; i < hashBytes.Length; i++)
-                 {
-                     sb.Append(hashBytes[i].ToString("x2"));
-                 }
-
-                 return sb.ToString();
-             }
-         }*/
-
-       
 
         /*public bool IsExistEmail(string email)
         {
@@ -124,45 +109,15 @@ namespace BUS
             try
             {
                 tblEmployee tblEmployee = db.tblEmployees.FirstOrDefault(emp => emp.Email == employee.Email);
-
-                if (tblEmployee != null)
-                {
-                    tblEmployee.Address = employee.Address;
-                    tblEmployee.PhoneNumber = employee.PhoneNumber;
-
-                    db.SubmitChanges();
-                    return true;
-                }
-                else
-                {
-                    return false; // Trả về false nếu không tìm thấy nhân viên với email tương ứng
-                }
+                tblEmployee.Address = employee.Address;
+                tblEmployee.PhoneNumber = employee.PhoneNumber;
+                db.SubmitChanges();
+                return true;
             }
             catch (Exception ex)
             {
                 return false;
             }
-            //try
-            //    {
-            //    tblEmployee tblEmployee = db.tblEmployees.Where(emp => emp.Email == employee.Email).FirstOrDefault();
-            //    if (tblEmployee != null)
-            //        {
-            //            tblEmployee.Address = employee.Address;
-            //            tblEmployee.PhoneNumber = employee.PhoneNumber;
-
-            //            db.SubmitChanges();
-            //            return true;
-            //        }
-            //        else
-            //        {
-            //            return false; // Trả về false nếu không tìm thấy nhân viên với email tương ứng
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // Xử lý exception nếu có
-            //        return false;
-            //    }
         }
 
         public bool DeleteEmployee(int id)
@@ -221,6 +176,5 @@ namespace BUS
             }
             else return builder.ToString().ToLower();
         }
-
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnEmployee = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -131,6 +132,7 @@
             this.btnStatistic.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnStatistic.TextOffset = new System.Drawing.Point(50, 0);
             this.btnStatistic.UseTransparentBackground = true;
+            //this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
             // 
             // guna2Separator1
             // 
@@ -196,7 +198,7 @@
             this.btnAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccount.TextOffset = new System.Drawing.Point(50, 0);
             this.btnAccount.UseTransparentBackground = true;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            //this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnBill
             // 
@@ -225,6 +227,7 @@
             this.btnBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBill.TextOffset = new System.Drawing.Point(50, 0);
             this.btnBill.UseTransparentBackground = true;
+            //this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
             // btnCustomer
             // 
@@ -253,6 +256,7 @@
             this.btnCustomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCustomer.TextOffset = new System.Drawing.Point(50, 0);
             this.btnCustomer.UseTransparentBackground = true;
+            //this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnProduct
             // 
@@ -281,6 +285,7 @@
             this.btnProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnProduct.TextOffset = new System.Drawing.Point(50, 0);
             this.btnProduct.UseTransparentBackground = true;
+            //this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // guna2PictureBox1
             // 
@@ -383,6 +388,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý bán hàng";
@@ -390,7 +396,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
