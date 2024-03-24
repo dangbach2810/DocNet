@@ -15,15 +15,18 @@ namespace GUI
     {
         BUS_Employee busEmployee = new BUS_Employee();
         frmEmployee fEmployee = new frmEmployee();
-        /*frmProduct fProduct = new frmProduct();
-        frmCustomer fCustomer = new frmCustomer();
-        frmStatistic fStatistic = new frmStatistic();
-        frmAccount fAccount;
-        frmBill fBill;*/
+        //frmProduct fProduct = new frmProduct();
+        //frmCustomer fCustomer = new frmCustomer();
+        //frmStatistic fStatistic = new frmStatistic();
+        //frmAccount fAccount = new frmAccount();
+        // frmBill fBill;
+        frmAccount frmAccount;
 
         public frmMain(string email)
         {
             InitializeComponent();
+            busEmployee = new BUS_Employee();
+            frmAccount = new frmAccount(email);
             /*if (!busEmployee.GetEmployeeRole(email))
             {
                 btnEmployee.Visible = false;
@@ -63,6 +66,15 @@ namespace GUI
             fEmployee.Dock = DockStyle.Fill;
             pnlBody.Controls.Add(fEmployee);
             fEmployee.Show();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            pnlBody.Controls.Clear();
+            frmAccount.TopLevel = false;
+            pnlBody.Controls.Add(frmAccount);
+            frmAccount.Dock = DockStyle.Fill;
+            frmAccount.Show();
         }
 
         /*private void btnProduct_Click(object sender, EventArgs e)
