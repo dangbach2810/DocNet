@@ -35,8 +35,7 @@ namespace GUI
                     Properties.Settings.Default.Save();
                     frmMain fMain = new frmMain(txtEmail.Text);
                     this.Hide();
-                   fMain.ShowDialog();
-                    this.Show();
+                    fMain.Show();
                 }
                 else
                 {

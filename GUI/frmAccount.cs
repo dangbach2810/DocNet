@@ -76,11 +76,11 @@ namespace GUI
             // Kiểm tra kết quả và hiển thị thông báo tương ứng
             if (isSuccess)
             {
-                MessageBox.Show("Employee information updated successfully.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sửa thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to update employee information.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể sửa được thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -93,6 +93,52 @@ namespace GUI
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private bool isRetypingPassword = false;
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            if (!isRetypingPassword)
+            {
+                if (txtOldPassword.Text != "")
+                {
+                    if (txtNewPassword.Text == txtRepeatPassword.Text)
+                    {
+                        busEmployee = new BUS_Employee();
+                        if (busEmployee.ChangePassword(txtEmail.Text, txtOldPassword.Text, txtNewPassword.Text))
+                        {
+                            MessageBox.Show("Đổi mật khẩu thành công, vui lòng đăng nhập lại.", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Properties.Settings.Default.password = "";
+                            Properties.Settings.Default.Save();
+                            Application.Exit();
+                            Application.Restart();
+                        }
+                        else MessageBox.Show("Mật khẩu cũ không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        isRetypingPassword = true;
+                        txtRepeatPassword.Clear();
+                        MessageBox.Show("Mật khẩu mới không trùng nhau! Vui lòng nhập lại mật khẩu mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else MessageBox.Show("Vui lòng nhập mật khẩu cũ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (txtRepeatPassword.Text == txtNewPassword.Text)
+                {
+                    isRetypingPassword = false; // Reset biến để cho lần sau không nhảy vào đoạn code này
+                    btnChangePassword_Click(sender, e); // Gọi lại sự kiện để thực hiện cập nhật mật khẩu
+                }
+                else
+                {
+                    txtRepeatPassword.Clear();
+                    MessageBox.Show("Mật khẩu mới không trùng nhau! Vui lòng nhập lại mật khẩu mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
