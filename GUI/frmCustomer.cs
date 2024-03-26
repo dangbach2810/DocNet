@@ -213,7 +213,7 @@ namespace GUI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            MsgBox("Chào mừng đến với bình nguyên vô tận!");
+            MsgBox("Xin chào nhe!!");
         }
     }
 }
