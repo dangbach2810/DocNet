@@ -15,11 +15,11 @@ namespace GUI
     {
         BUS_Employee busEmployee = new BUS_Employee();
         frmEmployee fEmployee = new frmEmployee();
-        /*frmProduct fProduct = new frmProduct();
-        frmCustomer fCustomer = new frmCustomer();
-        frmStatistic fStatistic = new frmStatistic();
-        frmAccount fAccount;
-        frmBill fBill;*/
+        frmProduct fProduct = new frmProduct();
+        //frmCustomer fCustomer = new frmCustomer();
+       
+       // frmAccount fAccount;
+        frmBill fBill;
 
         public frmMain(string email)
         {
@@ -42,8 +42,8 @@ namespace GUI
                 pnlBody.Controls.Add(fStatistic);
                 fStatistic.Show();
             }
-            fAccount = new frmAccount(email);
-            fBill = new frmBill(email);*/
+            fAccount = new frmAccount(email);*/
+            fBill = new frmBill();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace GUI
             fEmployee.Show();
         }
 
-        /*private void btnProduct_Click(object sender, EventArgs e)
+        private void btnProduct_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
             fProduct.TopLevel = false;
@@ -74,7 +74,7 @@ namespace GUI
             fProduct.Show();
         }
 
-        private void btnCustomer_Click(object sender, EventArgs e)
+       /* private void btnCustomer_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
             fCustomer.TopLevel = false;
@@ -82,7 +82,7 @@ namespace GUI
             fCustomer.Dock = DockStyle.Fill;
             fCustomer.Show();
         }
-
+*/
         private void btnBill_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
@@ -92,22 +92,15 @@ namespace GUI
             fBill.Show();
         }
 
-        private void btnAccount_Click(object sender, EventArgs e)
+        /*private void btnAccount_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
             fAccount.TopLevel = false;
             pnlBody.Controls.Add(fAccount);
             fAccount.Dock = DockStyle.Fill;
             fAccount.Show();
-        }
-
-        private void btnStatistic_Click(object sender, EventArgs e)
-        {
-            pnlBody.Controls.Clear();
-            fStatistic.TopLevel = false;
-            pnlBody.Controls.Add(fStatistic);
-            fStatistic.Dock = DockStyle.Fill;
-            fStatistic.Show();
         }*/
+
+       
     }
 }

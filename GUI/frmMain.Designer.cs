@@ -227,7 +227,7 @@
             this.btnBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBill.TextOffset = new System.Drawing.Point(50, 0);
             this.btnBill.UseTransparentBackground = true;
-            //this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
             // btnCustomer
             // 
@@ -285,7 +285,7 @@
             this.btnProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnProduct.TextOffset = new System.Drawing.Point(50, 0);
             this.btnProduct.UseTransparentBackground = true;
-            //this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // guna2PictureBox1
             // 
