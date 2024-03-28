@@ -11,74 +11,128 @@ namespace BUS
 {
     public class BUS_Employee
     {
-        QLSanPhamDataContext db = new QLSanPhamDataContext();
-       /* private string Encrytion(string input)
+        private QLSanPhamDataContext db = new QLSanPhamDataContext();
+
+        public BUS_Employee()
         {
-            using (MD5 md5 = MD5.Create())
-            {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-                StringBuilder sb = new StringBuilder();
-
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("x2"));
-                }
-
-                return sb.ToString();
-            }
-        }*/
-
+            db = new QLSanPhamDataContext();
+        }
         public bool Login(string email, string password)
         {
 
-            tblEmployee employee = db.tblEmployees. FirstOrDefault(emp => emp.Email == email);
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
             if (employee != null)
             {
                 return true;
             }
             return false;
-            
+
         }
 
-        /*public bool IsExistEmail(string email)
+        public tblEmployee TimNVByEmail(string email)
         {
-            return dalEmployee.IsExistEmail(email);
+            return db.tblEmployees.FirstOrDefault(nv => nv.Email == email);
         }
 
-        public bool UpdatePassword(string email, string password)
+        public bool UpdateEmployeeAddressPhoneNumber(tblEmployee employee)
         {
-            password = Encrytion(password);
-            return dalEmployee.UpdatePassword(email, password);
+            try
+            {
+                tblEmployee tblEmployee = db.tblEmployees.FirstOrDefault(emp => emp.Email == employee.Email);
+
+                if (tblEmployee != null)
+                {
+                    tblEmployee.Address = employee.Address;
+                    tblEmployee.PhoneNumber = employee.PhoneNumber;
+
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false; // Trả về false nếu không tìm thấy nhân viên với email tương ứng
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
+        //private string Encrytion(string input)
+        //{
+        //    using (MD5 md5 = MD5.Create())
+        //    {
+        //        byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+        //        byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+        //        // Chuyển mảng byte sang chuỗi hexa
+        //        string hashString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+
+        //        return hashString;
+        //    }
+        //}
         public bool GetEmployeeRole(string email)
         {
-            return dalEmployee.GetEmployeeRole(email);
+            var qr = db.tblEmployees.Where(emp => emp.Email == email).FirstOrDefault(); 
+            if(qr != null)
+            {
+                return true;
+            }
+            return false;
         }
-
         public bool ChangePassword(string email, string oldPassword, string newPassword)
         {
-            oldPassword = Encrytion(oldPassword);
-            newPassword = Encrytion(newPassword);
-            return dalEmployee.ChangePassword(email, oldPassword, newPassword);
-        }*/
+            try
+            {
+                // Lấy thông tin nhân viên từ cơ sở dữ liệu dựa trên email
+                tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+
+                if (employee != null)
+                {
+                    // Kiểm tra mật khẩu cũ
+                    if (employee.Password == oldPassword)
+                    {
+                        // Nếu mật khẩu cũ đúng, cập nhật mật khẩu mới
+                        employee.Password = newPassword;
+                        db.SubmitChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        // Nếu mật khẩu cũ không đúng, trả về false
+                        return false;
+                    }
+                }
+                else
+                {
+                    // Nếu không tìm thấy nhân viên với email tương ứng, trả về false
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ và trả về false nếu có lỗi xảy ra
+                return false;
+            }
+        }
 
         public List<tblEmployee> ListOfEmployees()
         {
             return db.tblEmployees.ToList();
         }
 
-       public bool InsertEmployee(tblEmployee employee)
+        public bool InsertEmployee(tblEmployee employee)
         {
             try
             {
                 db.tblEmployees.InsertOnSubmit(employee);
                 db.SubmitChanges();
                 return true;
-            }catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
-            
+
                 return false;
             }
         }
@@ -94,23 +148,6 @@ namespace BUS
                 tblEmployee.Email = employee.Email;
                 tblEmployee.Role = employee.Role;
                 tblEmployee.Status = employee.Status;
-
-                db.SubmitChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public bool UpdateEmployeeAddressPhoneNumber(tblEmployee employee)
-        {
-            try
-            {
-                tblEmployee tblEmployee = db.tblEmployees.FirstOrDefault(emp => emp.Email == employee.Email);
-                tblEmployee.Address = employee.Address;
-                tblEmployee.PhoneNumber = employee.PhoneNumber;
                 db.SubmitChanges();
                 return true;
             }
@@ -140,15 +177,6 @@ namespace BUS
             return db.tblEmployees.Where(emp => emp.Name.Contains(name)).ToList();
         }
 
-       /* public string GetEmployeeIdName(string email)
-        {
-            return dalEmployee.GetEmployeeIdName(email);
-        }*/
-
-       /* public string GetEmployeeAddressPhoneNumber(string email)
-        {
-            return dalEmployee.GetEmployeeAddressPhoneNumber(email);
-        }*/
 
         public string GetRandomPassword()
         {
@@ -176,5 +204,6 @@ namespace BUS
             }
             else return builder.ToString().ToLower();
         }
+
     }
 }

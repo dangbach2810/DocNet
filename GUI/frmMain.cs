@@ -16,15 +16,15 @@ namespace GUI
         BUS_Employee busEmployee = new BUS_Employee();
         frmEmployee fEmployee = new frmEmployee();
         frmProduct fProduct = new frmProduct();
-        //frmCustomer fCustomer = new frmCustomer();
+        frmCustomer fCustomer = new frmCustomer();
        
-       // frmAccount fAccount;
+        frmAccount fAccount;
         frmBill fBill;
 
         public frmMain(string email)
         {
             InitializeComponent();
-            /*if (!busEmployee.GetEmployeeRole(email))
+            if (!busEmployee.GetEmployeeRole(email))
             {
                 btnEmployee.Visible = false;
                 btnStatistic.Visible = false;
@@ -34,15 +34,7 @@ namespace GUI
                 pnlBody.Controls.Add(fProduct);
                 fProduct.Show();
             }
-            else
-            {
-                btnStatistic.Checked = true;
-                fStatistic.TopLevel = false;
-                fStatistic.Dock = DockStyle.Fill;
-                pnlBody.Controls.Add(fStatistic);
-                fStatistic.Show();
-            }
-            fAccount = new frmAccount(email);*/
+            fAccount = new frmAccount(email);
             fBill = new frmBill();
         }
 
@@ -74,7 +66,7 @@ namespace GUI
             fProduct.Show();
         }
 
-       /* private void btnCustomer_Click(object sender, EventArgs e)
+        private void btnCustomer_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
             fCustomer.TopLevel = false;
@@ -82,7 +74,6 @@ namespace GUI
             fCustomer.Dock = DockStyle.Fill;
             fCustomer.Show();
         }
-*/
         private void btnBill_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
@@ -92,14 +83,14 @@ namespace GUI
             fBill.Show();
         }
 
-        /*private void btnAccount_Click(object sender, EventArgs e)
+        private void btnAccount_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
             fAccount.TopLevel = false;
             pnlBody.Controls.Add(fAccount);
             fAccount.Dock = DockStyle.Fill;
             fAccount.Show();
-        }*/
+        }
 
        
     }

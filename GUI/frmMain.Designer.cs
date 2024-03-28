@@ -198,7 +198,7 @@
             this.btnAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccount.TextOffset = new System.Drawing.Point(50, 0);
             this.btnAccount.UseTransparentBackground = true;
-            //this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnBill
             // 
@@ -256,7 +256,7 @@
             this.btnCustomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCustomer.TextOffset = new System.Drawing.Point(50, 0);
             this.btnCustomer.UseTransparentBackground = true;
-            //this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnProduct
             // 
