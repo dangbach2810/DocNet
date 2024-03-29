@@ -78,7 +78,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(936, 263);
+            this.guna2Panel1.Size = new System.Drawing.Size(1008, 263);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2GroupBox2
@@ -91,7 +91,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(563, 139);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(599, 139);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(252, 60);
             this.guna2GroupBox2.TabIndex = 16;
@@ -154,7 +154,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(145, 139);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(181, 139);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(252, 60);
             this.guna2GroupBox1.TabIndex = 1;
@@ -224,7 +224,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtSearch.ForeColor = System.Drawing.Color.White;
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(668, 209);
+            this.txtSearch.Location = new System.Drawing.Point(704, 209);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -248,7 +248,7 @@
             this.btnInsert.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnInsert.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnInsert.ForeColor = System.Drawing.Color.White;
-            this.btnInsert.Location = new System.Drawing.Point(16, 205);
+            this.btnInsert.Location = new System.Drawing.Point(52, 205);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(135, 45);
             this.btnInsert.TabIndex = 0;
@@ -268,7 +268,7 @@
             this.btnRefresh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(505, 205);
+            this.btnRefresh.Location = new System.Drawing.Point(541, 205);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(135, 45);
             this.btnRefresh.TabIndex = 3;
@@ -288,7 +288,7 @@
             this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(179, 205);
+            this.btnUpdate.Location = new System.Drawing.Point(215, 205);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(135, 45);
             this.btnUpdate.TabIndex = 1;
@@ -301,7 +301,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(455, 159);
+            this.label6.Location = new System.Drawing.Point(491, 159);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 21);
             this.label6.TabIndex = 12;
@@ -320,7 +320,7 @@
             this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(342, 205);
+            this.btnDelete.Location = new System.Drawing.Point(378, 205);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(135, 45);
             this.btnDelete.TabIndex = 2;
@@ -333,7 +333,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(79, 159);
+            this.label5.Location = new System.Drawing.Point(115, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 21);
             this.label5.TabIndex = 9;
@@ -356,7 +356,7 @@
             this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtPhoneNumber.ForeColor = System.Drawing.Color.White;
             this.txtPhoneNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(563, 96);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(599, 96);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.PasswordChar = '\0';
@@ -371,7 +371,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(455, 104);
+            this.label4.Location = new System.Drawing.Point(491, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 21);
             this.label4.TabIndex = 7;
@@ -394,7 +394,7 @@
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtAddress.ForeColor = System.Drawing.Color.White;
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(563, 38);
+            this.txtAddress.Location = new System.Drawing.Point(599, 38);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PasswordChar = '\0';
@@ -409,7 +409,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(455, 46);
+            this.label3.Location = new System.Drawing.Point(491, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 21);
             this.label3.TabIndex = 5;
@@ -432,7 +432,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtEmail.ForeColor = System.Drawing.Color.White;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(145, 96);
+            this.txtEmail.Location = new System.Drawing.Point(181, 96);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -447,7 +447,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(79, 104);
+            this.label2.Location = new System.Drawing.Point(115, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 21);
             this.label2.TabIndex = 3;
@@ -470,7 +470,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtName.ForeColor = System.Drawing.Color.White;
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Location = new System.Drawing.Point(145, 39);
+            this.txtName.Location = new System.Drawing.Point(181, 39);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
@@ -485,7 +485,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(79, 46);
+            this.label1.Location = new System.Drawing.Point(115, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 21);
             this.label1.TabIndex = 0;
@@ -497,7 +497,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 263);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(936, 317);
+            this.guna2Panel3.Size = new System.Drawing.Size(1008, 317);
             this.guna2Panel3.TabIndex = 2;
             // 
             // gvEmployee
@@ -531,7 +531,7 @@
             this.gvEmployee.ReadOnly = true;
             this.gvEmployee.RowHeadersVisible = false;
             this.gvEmployee.RowTemplate.Height = 35;
-            this.gvEmployee.Size = new System.Drawing.Size(936, 317);
+            this.gvEmployee.Size = new System.Drawing.Size(1008, 317);
             this.gvEmployee.TabIndex = 0;
             this.gvEmployee.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.gvEmployee.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -561,7 +561,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 580);
+            this.ClientSize = new System.Drawing.Size(1008, 580);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

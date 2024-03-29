@@ -43,9 +43,9 @@ namespace GUI
             {
                 item.DividerWidth = 1;
             }
-            /*gvCustomer.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvCustomer.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvCustomer.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;*/
+            gvCustomer.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            gvCustomer.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            
         }
         private void SetValue(bool param, bool isLoad)
         {
