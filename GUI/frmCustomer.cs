@@ -34,7 +34,7 @@ namespace GUI
         }
         private void LoadGridView()
         {
-            gvCustomer.Columns[0].HeaderText = "Mã nhân viên";
+            gvCustomer.Columns[0].HeaderText = "Mã khách hàng";
             gvCustomer.Columns[1].HeaderText = "Họ tên";
             gvCustomer.Columns[2].HeaderText = "Địa chỉ";
             gvCustomer.Columns[3].HeaderText = "Số điện thoại";
