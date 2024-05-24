@@ -46,6 +46,7 @@
     <Compile Include="BUS_BillInfo.cs" />
     <Compile Include="BUS_Customer.cs" />
     <Compile Include="BUS_Employee.cs" />
+    <Compile Include="BUS_Mail.cs" />
     <Compile Include="BUS_Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

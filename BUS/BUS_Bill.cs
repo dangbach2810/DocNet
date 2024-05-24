@@ -56,7 +56,20 @@ namespace BUS
             return listName.ToArray();
                    
         }
-
+        public bool DeleteBill(int id)
+        {
+            try
+            {
+                var bill = db.tblBills.FirstOrDefault(emp => emp.Id == id);
+                db.tblBills.DeleteOnSubmit(bill);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public double GetRevenueInMay()
         {
             return 0;//dalBill.GetRevenueInMay();

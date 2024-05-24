@@ -26,11 +26,22 @@ namespace DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=INTERN-LDBACH\\MAYAO;Initial Catalog=SalesManagement;Persist Security " +
-            "Info=True;User ID=sa;Password=123123;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A86NIAL;Initial Catalog=SalesManagement;Persist Security Info" +
+            "=True;User ID=sa;Password=123123;TrustServerCertificate=True")]
         public string SalesManagementConnectionString {
             get {
                 return ((string)(this["SalesManagementConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A86NIAL;Initial Catalog=SalesManagement;Persist Security Info" +
+            "=True;User ID=sa;Password=123123;Encrypt=True;TrustServerCertificate=True")]
+        public string SalesManagementConnectionString1 {
+            get {
+                return ((string)(this["SalesManagementConnectionString1"]));
             }
         }
     }

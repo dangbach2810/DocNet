@@ -58,11 +58,31 @@ namespace GUI
                 gvBill.DataSource  = busBill.SearchCustomerInBill(txtSearch.Text);
             }
         }
-
+        private void MsgBox(string message, bool isError = false)
+        {
+            if (isError)
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+       
         private void frmBill_Load(object sender, EventArgs e)
         {
             gvBill.DataSource = busBill.ListOfBills();
             LoadGridView();
+        }
+
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(gvBill.CurrentRow.Cells[0].Value.ToString());
+            if (busBill.DeleteBill(id))
+            {
+                MsgBox("Xóa hóa đơn thành công", false);
+                gvBill.DataSource = busBill.ListOfBills();
+                LoadGridView();
+            }
+            else
+                MsgBox("Xóa hóa đơn không thành công", true);
         }
     }
 }

@@ -28,10 +28,31 @@ namespace BUS
             return false;
 
         }
+        public bool IsExistEmail(string email)
+        {
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            if (employee != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
+            // return dalEmployee.IsExistEmail(email);
+        } 
         public tblEmployee TimNVByEmail(string email)
         {
             return db.tblEmployees.FirstOrDefault(nv => nv.Email == email);
+        }
+        public bool UpdatePassword(string email, string password)
+        {
+
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            employee.Password = password;
+            db.SubmitChanges();
+            return true;
         }
 
         public bool UpdateEmployeeAddressPhoneNumber(tblEmployee employee)
@@ -204,6 +225,5 @@ namespace BUS
             }
             else return builder.ToString().ToLower();
         }
-
     }
 }

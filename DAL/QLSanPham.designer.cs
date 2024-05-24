@@ -48,7 +48,7 @@ namespace DAL
     #endregion
 		
 		public QLSanPhamDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SalesManagementConnectionString, mappingSource)
+				base(global::DAL.Properties.Settings.Default.SalesManagementConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
