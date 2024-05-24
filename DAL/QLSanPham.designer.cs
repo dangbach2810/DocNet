@@ -39,16 +39,16 @@ namespace DAL
     partial void InserttblCustomer(tblCustomer instance);
     partial void UpdatetblCustomer(tblCustomer instance);
     partial void DeletetblCustomer(tblCustomer instance);
-    partial void InserttblEmployee(tblEmployee instance);
-    partial void UpdatetblEmployee(tblEmployee instance);
-    partial void DeletetblEmployee(tblEmployee instance);
     partial void InserttblProduct(tblProduct instance);
     partial void UpdatetblProduct(tblProduct instance);
     partial void DeletetblProduct(tblProduct instance);
+    partial void InserttblEmployee(tblEmployee instance);
+    partial void UpdatetblEmployee(tblEmployee instance);
+    partial void DeletetblEmployee(tblEmployee instance);
     #endregion
 		
 		public QLSanPhamDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SalesManagementConnectionString, mappingSource)
+				base(global::DAL.Properties.Settings.Default.SalesManagementConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -101,19 +101,19 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<tblEmployee> tblEmployees
-		{
-			get
-			{
-				return this.GetTable<tblEmployee>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblProduct> tblProducts
 		{
 			get
 			{
 				return this.GetTable<tblProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblEmployee> tblEmployees
+		{
+			get
+			{
+				return this.GetTable<tblEmployee>();
 			}
 		}
 	}
@@ -136,7 +136,11 @@ namespace DAL
 		
 		private EntityRef<tblCustomer> _tblCustomer;
 		
+		private EntityRef<tblCustomer> _tblCustomer1;
+		
 		private EntityRef<tblEmployee> _tblEmployee;
+		
+		private EntityRef<tblEmployee> _tblEmployee1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -157,7 +161,9 @@ namespace DAL
 		public tblBill()
 		{
 			this._tblCustomer = default(EntityRef<tblCustomer>);
+			this._tblCustomer1 = default(EntityRef<tblCustomer>);
 			this._tblEmployee = default(EntityRef<tblEmployee>);
+			this._tblEmployee1 = default(EntityRef<tblEmployee>);
 			OnCreated();
 		}
 		
@@ -192,7 +198,7 @@ namespace DAL
 			{
 				if ((this._EmployeeId != value))
 				{
-					if (this._tblEmployee.HasLoadedOrAssignedValue)
+					if ((this._tblEmployee.HasLoadedOrAssignedValue || this._tblEmployee1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -216,7 +222,7 @@ namespace DAL
 			{
 				if ((this._CustomerId != value))
 				{
-					if (this._tblCustomer.HasLoadedOrAssignedValue)
+					if ((this._tblCustomer.HasLoadedOrAssignedValue || this._tblCustomer1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -303,6 +309,40 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblCustomer_tblBill1", Storage="_tblCustomer1", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true)]
+		public tblCustomer tblCustomer1
+		{
+			get
+			{
+				return this._tblCustomer1.Entity;
+			}
+			set
+			{
+				tblCustomer previousValue = this._tblCustomer1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblCustomer1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblCustomer1.Entity = null;
+						previousValue.tblBills1.Remove(this);
+					}
+					this._tblCustomer1.Entity = value;
+					if ((value != null))
+					{
+						value.tblBills1.Add(this);
+						this._CustomerId = value.Id;
+					}
+					else
+					{
+						this._CustomerId = default(int);
+					}
+					this.SendPropertyChanged("tblCustomer1");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmployee_tblBill", Storage="_tblEmployee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
 		public tblEmployee tblEmployee
 		{
@@ -333,6 +373,40 @@ namespace DAL
 						this._EmployeeId = default(int);
 					}
 					this.SendPropertyChanged("tblEmployee");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmployee_tblBill1", Storage="_tblEmployee1", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
+		public tblEmployee tblEmployee1
+		{
+			get
+			{
+				return this._tblEmployee1.Entity;
+			}
+			set
+			{
+				tblEmployee previousValue = this._tblEmployee1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblEmployee1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblEmployee1.Entity = null;
+						previousValue.tblBills1.Remove(this);
+					}
+					this._tblEmployee1.Entity = value;
+					if ((value != null))
+					{
+						value.tblBills1.Add(this);
+						this._EmployeeId = value.Id;
+					}
+					else
+					{
+						this._EmployeeId = default(int);
+					}
+					this.SendPropertyChanged("tblEmployee1");
 				}
 			}
 		}
@@ -372,6 +446,8 @@ namespace DAL
 		
 		private EntityRef<tblProduct> _tblProduct;
 		
+		private EntityRef<tblProduct> _tblProduct1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -387,6 +463,7 @@ namespace DAL
 		public tblBillInfo()
 		{
 			this._tblProduct = default(EntityRef<tblProduct>);
+			this._tblProduct1 = default(EntityRef<tblProduct>);
 			OnCreated();
 		}
 		
@@ -401,7 +478,7 @@ namespace DAL
 			{
 				if ((this._ProductId != value))
 				{
-					if (this._tblProduct.HasLoadedOrAssignedValue)
+					if ((this._tblProduct.HasLoadedOrAssignedValue || this._tblProduct1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -488,6 +565,40 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblProduct_tblBillInfo1", Storage="_tblProduct1", ThisKey="ProductId", OtherKey="Id", IsForeignKey=true)]
+		public tblProduct tblProduct1
+		{
+			get
+			{
+				return this._tblProduct1.Entity;
+			}
+			set
+			{
+				tblProduct previousValue = this._tblProduct1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblProduct1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblProduct1.Entity = null;
+						previousValue.tblBillInfo1 = null;
+					}
+					this._tblProduct1.Entity = value;
+					if ((value != null))
+					{
+						value.tblBillInfo1 = this;
+						this._ProductId = value.Id;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("tblProduct1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -525,6 +636,8 @@ namespace DAL
 		
 		private EntitySet<tblBill> _tblBills;
 		
+		private EntitySet<tblBill> _tblBills1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -542,6 +655,7 @@ namespace DAL
 		public tblCustomer()
 		{
 			this._tblBills = new EntitySet<tblBill>(new Action<tblBill>(this.attach_tblBills), new Action<tblBill>(this.detach_tblBills));
+			this._tblBills1 = new EntitySet<tblBill>(new Action<tblBill>(this.attach_tblBills1), new Action<tblBill>(this.detach_tblBills1));
 			OnCreated();
 		}
 		
@@ -638,6 +752,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblCustomer_tblBill1", Storage="_tblBills1", ThisKey="Id", OtherKey="CustomerId")]
+		public EntitySet<tblBill> tblBills1
+		{
+			get
+			{
+				return this._tblBills1;
+			}
+			set
+			{
+				this._tblBills1.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -669,6 +796,288 @@ namespace DAL
 			this.SendPropertyChanging();
 			entity.tblCustomer = null;
 		}
+		
+		private void attach_tblBills1(tblBill entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblCustomer1 = this;
+		}
+		
+		private void detach_tblBills1(tblBill entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblCustomer1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblProduct")]
+	public partial class tblProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private int _Quantity;
+		
+		private double _ImportUnitPrice;
+		
+		private double _UnitPrice;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private string _Note;
+		
+		private EntityRef<tblBillInfo> _tblBillInfo;
+		
+		private EntityRef<tblBillInfo> _tblBillInfo1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnImportUnitPriceChanging(double value);
+    partial void OnImportUnitPriceChanged();
+    partial void OnUnitPriceChanging(double value);
+    partial void OnUnitPriceChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    partial void OnNoteChanging(string value);
+    partial void OnNoteChanged();
+    #endregion
+		
+		public tblProduct()
+		{
+			this._tblBillInfo = default(EntityRef<tblBillInfo>);
+			this._tblBillInfo1 = default(EntityRef<tblBillInfo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImportUnitPrice", DbType="Float NOT NULL")]
+		public double ImportUnitPrice
+		{
+			get
+			{
+				return this._ImportUnitPrice;
+			}
+			set
+			{
+				if ((this._ImportUnitPrice != value))
+				{
+					this.OnImportUnitPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ImportUnitPrice = value;
+					this.SendPropertyChanged("ImportUnitPrice");
+					this.OnImportUnitPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Float NOT NULL")]
+		public double UnitPrice
+		{
+			get
+			{
+				return this._UnitPrice;
+			}
+			set
+			{
+				if ((this._UnitPrice != value))
+				{
+					this.OnUnitPriceChanging(value);
+					this.SendPropertyChanging();
+					this._UnitPrice = value;
+					this.SendPropertyChanged("UnitPrice");
+					this.OnUnitPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Note
+		{
+			get
+			{
+				return this._Note;
+			}
+			set
+			{
+				if ((this._Note != value))
+				{
+					this.OnNoteChanging(value);
+					this.SendPropertyChanging();
+					this._Note = value;
+					this.SendPropertyChanged("Note");
+					this.OnNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblProduct_tblBillInfo", Storage="_tblBillInfo", ThisKey="Id", OtherKey="ProductId", IsUnique=true, IsForeignKey=false)]
+		public tblBillInfo tblBillInfo
+		{
+			get
+			{
+				return this._tblBillInfo.Entity;
+			}
+			set
+			{
+				tblBillInfo previousValue = this._tblBillInfo.Entity;
+				if (((previousValue != value) 
+							|| (this._tblBillInfo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblBillInfo.Entity = null;
+						previousValue.tblProduct = null;
+					}
+					this._tblBillInfo.Entity = value;
+					if ((value != null))
+					{
+						value.tblProduct = this;
+					}
+					this.SendPropertyChanged("tblBillInfo");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblProduct_tblBillInfo1", Storage="_tblBillInfo1", ThisKey="Id", OtherKey="ProductId", IsUnique=true, IsForeignKey=false)]
+		public tblBillInfo tblBillInfo1
+		{
+			get
+			{
+				return this._tblBillInfo1.Entity;
+			}
+			set
+			{
+				tblBillInfo previousValue = this._tblBillInfo1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblBillInfo1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblBillInfo1.Entity = null;
+						previousValue.tblProduct1 = null;
+					}
+					this._tblBillInfo1.Entity = value;
+					if ((value != null))
+					{
+						value.tblProduct1 = this;
+					}
+					this.SendPropertyChanged("tblBillInfo1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblEmployee")]
@@ -695,6 +1104,8 @@ namespace DAL
 		
 		private EntitySet<tblBill> _tblBills;
 		
+		private EntitySet<tblBill> _tblBills1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -720,6 +1131,7 @@ namespace DAL
 		public tblEmployee()
 		{
 			this._tblBills = new EntitySet<tblBill>(new Action<tblBill>(this.attach_tblBills), new Action<tblBill>(this.detach_tblBills));
+			this._tblBills1 = new EntitySet<tblBill>(new Action<tblBill>(this.attach_tblBills1), new Action<tblBill>(this.detach_tblBills1));
 			OnCreated();
 		}
 		
@@ -896,6 +1308,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblEmployee_tblBill1", Storage="_tblBills1", ThisKey="Id", OtherKey="EmployeeId")]
+		public EntitySet<tblBill> tblBills1
+		{
+			get
+			{
+				return this._tblBills1;
+			}
+			set
+			{
+				this._tblBills1.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -927,243 +1352,17 @@ namespace DAL
 			this.SendPropertyChanging();
 			entity.tblEmployee = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblProduct")]
-	public partial class tblProduct : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Name;
-		
-		private int _Quantity;
-		
-		private double _ImportUnitPrice;
-		
-		private double _UnitPrice;
-		
-		private System.Data.Linq.Binary _Image;
-		
-		private string _Note;
-		
-		private EntityRef<tblBillInfo> _tblBillInfo;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnImportUnitPriceChanging(double value);
-    partial void OnImportUnitPriceChanged();
-    partial void OnUnitPriceChanging(double value);
-    partial void OnUnitPriceChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    partial void OnNoteChanging(string value);
-    partial void OnNoteChanged();
-    #endregion
-		
-		public tblProduct()
+		private void attach_tblBills1(tblBill entity)
 		{
-			this._tblBillInfo = default(EntityRef<tblBillInfo>);
-			OnCreated();
+			this.SendPropertyChanging();
+			entity.tblEmployee1 = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		private void detach_tblBills1(tblBill entity)
 		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImportUnitPrice", DbType="Float NOT NULL")]
-		public double ImportUnitPrice
-		{
-			get
-			{
-				return this._ImportUnitPrice;
-			}
-			set
-			{
-				if ((this._ImportUnitPrice != value))
-				{
-					this.OnImportUnitPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ImportUnitPrice = value;
-					this.SendPropertyChanged("ImportUnitPrice");
-					this.OnImportUnitPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Float NOT NULL")]
-		public double UnitPrice
-		{
-			get
-			{
-				return this._UnitPrice;
-			}
-			set
-			{
-				if ((this._UnitPrice != value))
-				{
-					this.OnUnitPriceChanging(value);
-					this.SendPropertyChanging();
-					this._UnitPrice = value;
-					this.SendPropertyChanged("UnitPrice");
-					this.OnUnitPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Note
-		{
-			get
-			{
-				return this._Note;
-			}
-			set
-			{
-				if ((this._Note != value))
-				{
-					this.OnNoteChanging(value);
-					this.SendPropertyChanging();
-					this._Note = value;
-					this.SendPropertyChanged("Note");
-					this.OnNoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblProduct_tblBillInfo", Storage="_tblBillInfo", ThisKey="Id", OtherKey="ProductId", IsUnique=true, IsForeignKey=false)]
-		public tblBillInfo tblBillInfo
-		{
-			get
-			{
-				return this._tblBillInfo.Entity;
-			}
-			set
-			{
-				tblBillInfo previousValue = this._tblBillInfo.Entity;
-				if (((previousValue != value) 
-							|| (this._tblBillInfo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblBillInfo.Entity = null;
-						previousValue.tblProduct = null;
-					}
-					this._tblBillInfo.Entity = value;
-					if ((value != null))
-					{
-						value.tblProduct = this;
-					}
-					this.SendPropertyChanged("tblBillInfo");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.tblEmployee1 = null;
 		}
 	}
 }

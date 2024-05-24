@@ -67,13 +67,12 @@ namespace GUI
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng đang bảo trì", "Thông báo");
-            /*if (txtEmail.Text != "")
+            if (txtEmail.Text != "")
             {
                 busEmployee = new BUS_Employee();
                 if (busEmployee.IsExistEmail(txtEmail.Text))
                 {
-                    string password = busEmployee.GetRandomPassword();
+                    /*string password = busEmployee.GetRandomPassword();
                     if (busEmployee.UpdatePassword(txtEmail.Text, password))
                     {
                         SendMail loader = new SendMail(txtEmail.Text, password, true);
@@ -81,9 +80,41 @@ namespace GUI
                         MessageBox.Show(loader.Result, "Thông báo");
                     }
                     else
-                        MessageBox.Show("Không thực hiện được", "Thông báo");
+                        MessageBox.Show("Không thực hiện được", "Thông báo");*/
+
+                    frmResetPassword resetForm = new frmResetPassword(txtEmail.Text);
+                    resetForm.ShowDialog();
                 }
-            }*/
+                else
+                {
+                    MessageBox.Show("Email bạn vừa nhập không có trong hệ thống", "Thông báo");
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập Email!", "Thông báo");
+            }
+
+            
+
+            
+        }
+
+        private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

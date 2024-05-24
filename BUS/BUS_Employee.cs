@@ -12,6 +12,7 @@ namespace BUS
     public class BUS_Employee
     {
         QLSanPhamDataContext db = new QLSanPhamDataContext();
+        
        /* private string Encrytion(string input)
         {
             using (MD5 md5 = MD5.Create())
@@ -41,18 +42,31 @@ namespace BUS
             
         }
 
-        /*public bool IsExistEmail(string email)
+        public bool IsExistEmail(string email)
         {
-            return dalEmployee.IsExistEmail(email);
-        }
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            if (employee != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            // return dalEmployee.IsExistEmail(email);
+        } 
 
         public bool UpdatePassword(string email, string password)
         {
-            password = Encrytion(password);
-            return dalEmployee.UpdatePassword(email, password);
+
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            employee.Password = password;
+            db.SubmitChanges();
+            return true;
         }
 
-        public bool GetEmployeeRole(string email)
+        /*public bool GetEmployeeRole(string email)
         {
             return dalEmployee.GetEmployeeRole(email);
         }

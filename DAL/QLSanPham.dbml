@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SalesManagement" Class="QLSanPhamDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=INTERN-LDBACH\MAYAO;Initial Catalog=SalesManagement;Persist Security Info=True;User ID=sa;Trust Server Certificate=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SalesManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=SalesManagement;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SalesManagementConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tblBill" Member="tblBills">
     <Type Name="tblBill">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -8,7 +8,9 @@
       <Column Name="DateOfPayment" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TotalPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="tblCustomer_tblBill" Member="tblCustomer" ThisKey="CustomerId" OtherKey="Id" Type="tblCustomer" IsForeignKey="true" />
+      <Association Name="tblCustomer_tblBill1" Member="tblCustomer1" ThisKey="CustomerId" OtherKey="Id" Type="tblCustomer" IsForeignKey="true" />
       <Association Name="tblEmployee_tblBill" Member="tblEmployee" ThisKey="EmployeeId" OtherKey="Id" Type="tblEmployee" IsForeignKey="true" />
+      <Association Name="tblEmployee_tblBill1" Member="tblEmployee1" ThisKey="EmployeeId" OtherKey="Id" Type="tblEmployee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblBillInfo" Member="tblBillInfos">
@@ -17,6 +19,7 @@
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="tblProduct_tblBillInfo" Member="tblProduct" ThisKey="ProductId" OtherKey="Id" Type="tblProduct" IsForeignKey="true" />
+      <Association Name="tblProduct_tblBillInfo1" Member="tblProduct1" ThisKey="ProductId" OtherKey="Id" Type="tblProduct" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblCustomer" Member="tblCustomers">
@@ -26,6 +29,20 @@
       <Column Name="Address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="tblCustomer_tblBill" Member="tblBills" ThisKey="Id" OtherKey="CustomerId" Type="tblBill" />
+      <Association Name="tblCustomer_tblBill1" Member="tblBills1" ThisKey="Id" OtherKey="CustomerId" Type="tblBill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblProduct" Member="tblProducts">
+    <Type Name="tblProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImportUnitPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblProduct_tblBillInfo" Member="tblBillInfo" ThisKey="Id" OtherKey="ProductId" Type="tblBillInfo" Cardinality="One" />
+      <Association Name="tblProduct_tblBillInfo1" Member="tblBillInfo1" ThisKey="Id" OtherKey="ProductId" Type="tblBillInfo" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.tblEmployee" Member="tblEmployees">
@@ -39,18 +56,7 @@
       <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="tblEmployee_tblBill" Member="tblBills" ThisKey="Id" OtherKey="EmployeeId" Type="tblBill" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblProduct" Member="tblProducts">
-    <Type Name="tblProduct">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ImportUnitPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="UnitPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Note" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Association Name="tblProduct_tblBillInfo" Member="tblBillInfo" ThisKey="Id" OtherKey="ProductId" Type="tblBillInfo" Cardinality="One" />
+      <Association Name="tblEmployee_tblBill1" Member="tblBills1" ThisKey="Id" OtherKey="EmployeeId" Type="tblBill" />
     </Type>
   </Table>
 </Database>
