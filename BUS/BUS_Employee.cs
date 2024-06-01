@@ -165,6 +165,10 @@ namespace BUS
         {
             try
             {
+                if (IsExistEmail(employee.Email))
+                {
+                    return false;
+                }
                 employee.Password = Encrytion(employee.Password);
                 db.tblEmployees.InsertOnSubmit(employee);
                 db.SubmitChanges();
