@@ -14,12 +14,13 @@ namespace GUI
     public partial class frmResetPassword : Form
     {
         private string _email;
-        BUS_Employee busEmployee = new BUS_Employee();
+        BUS_Mail busMail;
 
         public frmResetPassword(string email)
         {
             InitializeComponent();
             _email = email;
+
         }
 
         private void Form_ResetPassword(object sender, EventArgs e)
@@ -36,27 +37,15 @@ namespace GUI
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            string newPassword = txtNewPassword.Text;
-            string confirmPassword = txtComfirmPassword.Text;
-            if (newPassword != confirmPassword)
-            {
-                MessageBox.Show("Mật khẩu không trùng khớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else
-            {
-                if (busEmployee.UpdatePassword(_email, newPassword))
+            
+            busMail = new BUS_Mail(txtEmail.ToString());
+            if (busMail.Send(_email))
                 {
-                    /*SendMail loader = new SendMail(txtEmail.Text, password, true);
-                    loader.ShowDialog();*/
                     MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
                     this.Close();
                 }
                 else
                     MessageBox.Show("Không thực hiện được", "Thông báo");
-            }
         }
-
-
     }
 }
