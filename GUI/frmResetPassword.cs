@@ -49,11 +49,11 @@ namespace GUI
                 {
                     /*SendMail loader = new SendMail(txtEmail.Text, password, true);
                     loader.ShowDialog();*/
-                    MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
+                    MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
-                    MessageBox.Show("Không thực hiện được", "Thông báo");
+                    MessageBox.Show("Không thực hiện được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

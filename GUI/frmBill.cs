@@ -12,7 +12,6 @@ namespace GUI
 {
     public partial class frmBill : Form
     {
-        frmBillInfo fBillInfo = new frmBillInfo();
         BUS_Bill busBill = new BUS_Bill();
 
         public frmBill()
@@ -24,7 +23,6 @@ namespace GUI
         private void btnCreate_Click(object sender, EventArgs e)
         {
             this.Hide();
-            fBillInfo.ShowDialog();
             this.Show();
             /*gvBill.DataSource = busBill.ListOfBills();
             LoadGridView();*/

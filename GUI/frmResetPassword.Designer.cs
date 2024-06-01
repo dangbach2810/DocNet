@@ -50,11 +50,10 @@
             this.guna2Panel2.Controls.Add(this.txtComfirmPassword);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel2.Location = new System.Drawing.Point(-3, 0);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2Panel2.Location = new System.Drawing.Point(-2, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(597, 646);
-            this.guna2Panel2.TabIndex = 4;
+            this.guna2Panel2.Size = new System.Drawing.Size(398, 420);
+            this.guna2Panel2.TabIndex = 6;
             // 
             // guna2ControlBox2
             // 
@@ -64,10 +63,9 @@
             this.guna2ControlBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(462, 0);
-            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(308, 0);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.Size = new System.Drawing.Size(68, 45);
+            this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox2.TabIndex = 3;
             // 
             // btnLogin
@@ -83,13 +81,11 @@
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(126, 492);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLogin.Location = new System.Drawing.Point(84, 320);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(393, 69);
+            this.btnLogin.Size = new System.Drawing.Size(262, 45);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đổi mật khẩu";
-            this.btnLogin.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // guna2ControlBox1
             // 
@@ -99,10 +95,9 @@
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(530, 0);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(353, 0);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(68, 45);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox1.TabIndex = 2;
             // 
             // txtNewPassword
@@ -121,15 +116,14 @@
             this.txtNewPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtNewPassword.ForeColor = System.Drawing.Color.White;
             this.txtNewPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNewPassword.Location = new System.Drawing.Point(126, 283);
-            this.txtNewPassword.Margin = new System.Windows.Forms.Padding(6);
+            this.txtNewPassword.Location = new System.Drawing.Point(84, 184);
+            this.txtNewPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.PlaceholderText = "Nhập mật khẩu mới";
             this.txtNewPassword.SelectedText = "";
-            this.txtNewPassword.Size = new System.Drawing.Size(393, 55);
+            this.txtNewPassword.Size = new System.Drawing.Size(262, 36);
             this.txtNewPassword.TabIndex = 1;
-            this.txtNewPassword.TextChanged += new System.EventHandler(this.Form_ResetPassword);
             // 
             // txtComfirmPassword
             // 
@@ -147,35 +141,36 @@
             this.txtComfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtComfirmPassword.ForeColor = System.Drawing.Color.White;
             this.txtComfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtComfirmPassword.Location = new System.Drawing.Point(126, 379);
-            this.txtComfirmPassword.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtComfirmPassword.Location = new System.Drawing.Point(84, 246);
+            this.txtComfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtComfirmPassword.Name = "txtComfirmPassword";
             this.txtComfirmPassword.PasswordChar = '*';
             this.txtComfirmPassword.PlaceholderText = "Nhập lại mật khẩu";
             this.txtComfirmPassword.SelectedText = "";
-            this.txtComfirmPassword.Size = new System.Drawing.Size(393, 55);
+            this.txtComfirmPassword.Size = new System.Drawing.Size(262, 36);
             this.txtComfirmPassword.TabIndex = 0;
-            this.txtComfirmPassword.TextChanged += new System.EventHandler(this.Form_ConfirmPassword);
             // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Image = global::GUI.Properties.Resources.shopify_100px1;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(212, 54);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(141, 35);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(222, 189);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(148, 123);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
             // frmResetPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 646);
+            this.ClientSize = new System.Drawing.Size(396, 420);
             this.Controls.Add(this.guna2Panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmResetPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form_ResetPassword);
             this.guna2Panel2.ResumeLayout(false);

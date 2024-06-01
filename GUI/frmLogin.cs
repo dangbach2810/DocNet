@@ -72,12 +72,12 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Email bạn vừa nhập không có trong hệ thống", "Thông báo");
+                    MessageBox.Show("Email bạn vừa nhập không có trong hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập Email!", "Thông báo");
+                MessageBox.Show("Bạn chưa nhập Email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
