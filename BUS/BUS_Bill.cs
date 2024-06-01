@@ -13,6 +13,7 @@ namespace BUS
         public Array ListOfBills()
         {
             var bill = db.tblBills.ToList();
+
             var result = from p in bill
                          join c in db.tblCustomers 
                          on

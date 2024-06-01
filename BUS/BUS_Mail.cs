@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 
 
 namespace BUS
@@ -14,12 +15,13 @@ namespace BUS
         private string senderEmail;
         private string senderPassword;
 
+        
         public BUS_Mail(string senderEmail, string senderPassword)
         {
             this.senderEmail = senderEmail;
             this.senderPassword = senderPassword;
         }
-
+        
         public string SendMail(string recipientEmail, string recipientPassword, bool isUpdate = false)
         {
             try
@@ -40,16 +42,7 @@ namespace BUS
                                                  "thông tin đăng nhập là: \n- Email: {0} \n- Mật khẩu: {1} ", recipientEmail, recipientPassword);
                     mailMsg.Subject = "Thông tin đăng nhập phần mềm!";
                 }
-                /*using (SmtpClient client = new SmtpClient())
-                {
-                    client.EnableSsl = true;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(senderEmail, senderPassword);
-                    client.Host = "smtp.gmail.com";
-                    client.Port = 587;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.Send(mailMsg);
-                }*/
+               
                 return "Vui lòng kiểm tra Email để nhận mật khẩu mới!";
             }
             catch (Exception e)

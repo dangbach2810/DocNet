@@ -40,8 +40,6 @@ namespace GUI
                 else
                 {
                     MessageBox.Show("Sai email hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtEmail.Text = "";
-
                     txtEmail.Focus();
                 }
             }

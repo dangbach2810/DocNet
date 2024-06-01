@@ -17,16 +17,44 @@ namespace BUS
         {
             db = new QLSanPhamDataContext();
         }
+        private string Encrytion(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+        }
         public bool Login(string email, string password)
         {
-
-            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
+            password = Encrytion(password);
+            tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email && emp.Password == password);
             if (employee != null)
             {
                 return true;
             }
             return false;
 
+        }
+        public bool IsCheckRole(string email)
+        {
+            tblEmployee employee = db.tblEmployees.Where(emp => emp.Email == email).FirstOrDefault();
+            if (employee.Role == false)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         public bool IsExistEmail(string email)
         {
@@ -48,7 +76,7 @@ namespace BUS
         }
         public bool UpdatePassword(string email, string password)
         {
-
+            password = Encrytion(password);
             tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
             employee.Password = password;
             db.SubmitChanges();
@@ -80,19 +108,7 @@ namespace BUS
             }
         }
 
-        //private string Encrytion(string input)
-        //{
-        //    using (MD5 md5 = MD5.Create())
-        //    {
-        //        byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-        //        byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-        //        // Chuyển mảng byte sang chuỗi hexa
-        //        string hashString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-
-        //        return hashString;
-        //    }
-        //}
+       
         public bool GetEmployeeRole(string email)
         {
             var qr = db.tblEmployees.Where(emp => emp.Email == email).FirstOrDefault(); 
@@ -106,6 +122,8 @@ namespace BUS
         {
             try
             {
+                oldPassword = Encrytion(oldPassword);
+                newPassword = Encrytion(newPassword);
                 // Lấy thông tin nhân viên từ cơ sở dữ liệu dựa trên email
                 tblEmployee employee = db.tblEmployees.FirstOrDefault(emp => emp.Email == email);
 
@@ -147,6 +165,7 @@ namespace BUS
         {
             try
             {
+                employee.Password = Encrytion(employee.Password);
                 db.tblEmployees.InsertOnSubmit(employee);
                 db.SubmitChanges();
                 return true;

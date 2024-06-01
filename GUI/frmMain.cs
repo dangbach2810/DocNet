@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GUI
 {
@@ -20,7 +21,7 @@ namespace GUI
 
         frmAccount fAccount;
         frmBill fBill;
-
+        static bool isCheckRole = false;
         public frmMain(string email)
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace GUI
                 pnlBody.Controls.Add(fProduct);
                 fProduct.Show();
             }
+            isCheckRole = busEmployee.IsCheckRole(email);
             fAccount = new frmAccount(email);
             fBill = new frmBill();
         }
@@ -49,11 +51,19 @@ namespace GUI
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            pnlBody.Controls.Clear();
-            fEmployee.TopLevel = false;
-            fEmployee.Dock = DockStyle.Fill;
-            pnlBody.Controls.Add(fEmployee);
-            fEmployee.Show();
+            if (isCheckRole)
+            {
+                pnlBody.Controls.Clear();
+                fEmployee.TopLevel = false;
+                fEmployee.Dock = DockStyle.Fill;
+                pnlBody.Controls.Add(fEmployee);
+                fEmployee.Show();
+            }
+            else
+            {
+                MessageBox.Show("Không có quyền truy cập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
@@ -71,7 +81,7 @@ namespace GUI
             fCustomer.TopLevel = false;
             pnlBody.Controls.Add(fCustomer);
             fCustomer.Dock = DockStyle.Fill;
-            fCustomer.Show();
+            fCustomer.Show();  
         }
         private void btnBill_Click(object sender, EventArgs e)
         {
@@ -81,7 +91,7 @@ namespace GUI
             fBill.Dock = DockStyle.Fill;
             fBill.Show();
         }
-
+        
         private void btnAccount_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
@@ -89,6 +99,7 @@ namespace GUI
             pnlBody.Controls.Add(fAccount);
             fAccount.Dock = DockStyle.Fill;
             fAccount.Show();
+
         }
     }
 }

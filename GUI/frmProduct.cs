@@ -101,7 +101,7 @@ namespace GUI
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
-            gvProduct.DataSource = busProduct.ListOfProducts();
+            gvProduct.DataSource = busProduct.ListOfProducts(); 
             LoadGridView();
             SetValue(true, false);
             txtName.Focus();
